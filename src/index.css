@@ -8,35 +8,72 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
+    /* Professional Monochrome Design System */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 0%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 0%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 210 17% 98%;
+    --secondary-foreground: 0 0% 0%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 17% 98%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 210 17% 96%;
+    --accent-foreground: 0 0% 0%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 48 96% 53%;
+    --warning-foreground: 0 0% 0%;
+
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 0 0% 0%;
 
     --radius: 0.5rem;
+
+    /* Professional TelecomMaster Design Extensions */
+    --gray-50: 210 17% 98%;
+    --gray-100: 220 14% 96%;
+    --gray-200: 220 13% 91%;
+    --gray-300: 216 12% 84%;
+    --gray-400: 218 11% 65%;
+    --gray-500: 220 9% 46%;
+    --gray-600: 215 14% 34%;
+    --gray-700: 217 19% 27%;
+    --gray-800: 215 28% 17%;
+    --gray-900: 220 39% 11%;
+
+    /* Gradients for professional UI */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--gray-50)), hsl(var(--background)));
+    --gradient-card: linear-gradient(145deg, hsl(var(--background)), hsl(var(--gray-50)));
+    --gradient-button: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--gray-800)));
+
+    /* Shadows for depth */
+    --shadow-sm: 0 1px 2px 0 hsl(var(--gray-900) / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(var(--gray-900) / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(var(--gray-900) / 0.1);
+    --shadow-xl: 0 25px 50px -12px hsl(var(--gray-900) / 0.25);
+
+    /* Professional animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +138,93 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+}
+
+@layer components {
+  /* Professional TelecomMaster Component Styles */
+  .telecom-hero {
+    @apply bg-gradient-to-br from-gray-50 to-background;
+  }
+
+  .telecom-card {
+    @apply bg-gradient-to-br from-background to-gray-50 border border-gray-200 rounded-lg shadow-lg;
+    transition: var(--transition-smooth);
+  }
+
+  .telecom-card:hover {
+    @apply shadow-xl transform -translate-y-1;
+  }
+
+  .telecom-button-primary {
+    @apply bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium;
+    background: var(--gradient-button);
+    transition: var(--transition-spring);
+  }
+
+  .telecom-button-primary:hover {
+    @apply shadow-lg transform scale-105;
+  }
+
+  .telecom-input {
+    @apply bg-background border-2 border-gray-200 rounded-xl px-4 py-3 text-foreground;
+    transition: var(--transition-smooth);
+  }
+
+  .telecom-input:focus {
+    @apply border-primary ring-2 ring-primary/20 outline-none;
+  }
+
+  .telecom-status-active {
+    @apply bg-success text-success-foreground px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .telecom-status-pending {
+    @apply bg-warning text-warning-foreground px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .telecom-status-error {
+    @apply bg-destructive text-destructive-foreground px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .telecom-message-user {
+    @apply bg-primary text-primary-foreground p-4 rounded-2xl rounded-br-md ml-auto max-w-md;
+  }
+
+  .telecom-message-agent {
+    @apply bg-gray-100 text-foreground p-4 rounded-2xl rounded-bl-md mr-auto max-w-md;
+  }
+}
+
+@layer utilities {
+  .animate-handwriting {
+    animation: handwriting 2s ease-in-out;
+  }
+
+  @keyframes handwriting {
+    0% {
+      stroke-dasharray: 0 100;
+    }
+    100% {
+      stroke-dasharray: 100 0;
+    }
+  }
+
+  .animate-typing {
+    animation: typing 1.5s infinite;
+  }
+
+  @keyframes typing {
+    0%, 60%, 100% {
+      transform: translateY(0);
+    }
+    30% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 }
