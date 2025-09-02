@@ -3,8 +3,8 @@ import { useId } from "react";
 
 export function FeaturesSectionWithCardGradient() {
   return (
-    <div className="py-20 lg:py-40">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 md:gap-2 max-w-7xl mx-auto">
+    <div className="py-12 lg:py-20">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto px-4">
         {grid.map((feature) => (
           <div
             key={feature.title}
@@ -36,34 +36,9 @@ const grid = [
       "Automatically create and categorize Jira tickets with proper priority assignment and detailed descriptions.",
   },
   {
-    title: "Multi-Team Coordination",
-    description:
-      "Route tickets to appropriate teams: Network, Billing, Technical Support based on complaint type and urgency.",
-  },
-  {
     title: "Real-time Analytics",
     description:
       "Generate comprehensive reports and insights on complaint resolution trends and team performance metrics.",
-  },
-  {
-    title: "Priority Classification",
-    description:
-      "Intelligent P1/P2/P3 priority assignment based on complaint severity, customer tier, and business impact.",
-  },
-  {
-    title: "Workflow Automation",
-    description:
-      "End-to-end automation from complaint intake to resolution tracking with automated status updates.",
-  },
-  {
-    title: "Enterprise Integration",
-    description:
-      "Seamlessly integrate with existing telecom infrastructure, CRM systems, and third-party tools.",
-  },
-  {
-    title: "24/7 Processing",
-    description:
-      "Round-the-clock complaint processing with consistent quality and speed, ensuring no customer issue goes unnoticed.",
   },
 ];
 
