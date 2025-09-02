@@ -57,20 +57,20 @@ export function TicketResults() {
   return (
     <div className="w-full max-w-4xl mx-auto mt-8 space-y-4 animate-fade-in">
       <div className="text-center mb-6">
-        <h2 className="text-2xl font-bold text-white mb-2">Processing Complete</h2>
-        <p className="text-white/70">Created {mockTickets.length} tickets from customer complaints</p>
+        <h2 className="text-2xl font-bold text-foreground mb-2">Processing Complete</h2>
+        <p className="text-muted-foreground">Created {mockTickets.length} tickets from customer complaints</p>
       </div>
       
       <div className="grid gap-4">
         {mockTickets.map((ticket, index) => (
           <Card 
             key={ticket.id} 
-            className="bg-white/5 border-white/10 p-6 hover:bg-white/10 transition-all duration-300"
+            className="bg-accent/50 border-border p-6 hover:bg-accent transition-all duration-300"
             style={{ animationDelay: `${index * 0.1}s` }}
           >
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center gap-3">
-                <h3 className="text-lg font-semibold text-white">{ticket.id}</h3>
+                <h3 className="text-lg font-semibold text-foreground">{ticket.id}</h3>
                 <Badge className={getPriorityColor(ticket.priority)}>
                   {ticket.priority}
                 </Badge>
@@ -80,11 +80,11 @@ export function TicketResults() {
               </div>
             </div>
             
-            <p className="text-white/90 mb-3">{ticket.title}</p>
+            <p className="text-foreground mb-3">{ticket.title}</p>
             
             <div className="flex items-center justify-between text-sm">
-              <span className="text-white/60">Assigned to: {ticket.team}</span>
-              <span className="text-white/60">Just now</span>
+              <span className="text-muted-foreground">Assigned to: {ticket.team}</span>
+              <span className="text-muted-foreground">Just now</span>
             </div>
           </Card>
         ))}

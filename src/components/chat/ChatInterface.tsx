@@ -16,7 +16,6 @@ export function ChatInterface() {
       <div className="mb-8 space-y-6 min-h-[300px]">
         {messages.length === 0 ? (
           <div className="text-center py-16">
-            <div className="text-6xl mb-4">🤖</div>
             <h3 className="text-xl font-semibold text-foreground mb-2">
               TelecomMaster Agent Ready
             </h3>

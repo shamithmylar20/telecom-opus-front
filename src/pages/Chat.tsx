@@ -93,7 +93,6 @@ const Chat = () => {
           {!chatMovedUp && (
             <div className="flex flex-col gap-10 items-center">
               <div className="text-center space-y-4">
-                <div className="text-6xl mb-4">🤖</div>
                 <h2 className="text-3xl font-bold text-foreground mb-4">
                   How Can I Help You Today?
                 </h2>
