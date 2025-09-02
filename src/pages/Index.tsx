@@ -10,7 +10,7 @@ const Index = () => {
       subtitle="AI-Powered Complaint Resolution Agent"
       actions={[
         {
-          label: "Go to Chat Section",
+          label: "Start Processing Complaints",
           href: "/chat",
           variant: "outline"
         }
