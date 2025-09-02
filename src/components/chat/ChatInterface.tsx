@@ -9,6 +9,7 @@ import { ProcessingStatus } from './ProcessingStatus';
 
 export function ChatInterface() {
   const { messages, isLoading, processingStatus, sendMessage } = useTelecomAgent();
+  const promptBoxRef = React.useRef<{ reset: () => void; focus: () => void; blur: () => void; value: string; name?: string }>(null);
 
   return (
     <div className="w-full max-w-4xl mx-auto">
@@ -38,16 +39,16 @@ export function ChatInterface() {
       <form 
         onSubmit={(e) => {
           e.preventDefault();
-          const formData = new FormData(e.currentTarget);
-          const message = formData.get('message') as string;
-          if (message?.trim()) {
-            sendMessage(message.trim());
-            e.currentTarget.reset();
+          const message = promptBoxRef.current?.value?.trim();
+          if (message) {
+            sendMessage(message);
+            promptBoxRef.current?.reset();
           }
         }}
         className="w-full"
       >
         <PromptBox
+          ref={promptBoxRef}
           name="message"
           placeholder="Tell me to process customer complaints and create Jira tickets..."
           disabled={isLoading}
