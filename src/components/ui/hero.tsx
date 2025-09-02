@@ -53,7 +53,7 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
       <section
         ref={ref}
         className={cn(
-          "relative z-0 flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-black text-white",
+          "relative z-0 flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-background text-foreground",
           className,
         )}
         {...props}
@@ -65,7 +65,7 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
             )}
 
             {/* Main glow */}
-            <div className="absolute inset-auto z-50 h-36 w-[28rem] -translate-y-[-30%] rounded-full bg-white/20 opacity-80 blur-3xl" />
+            <div className="absolute inset-auto z-50 h-36 w-[28rem] -translate-y-[-30%] rounded-full bg-primary/20 opacity-80 blur-3xl" />
 
             {/* Lamp effect */}
             <motion.div
@@ -73,7 +73,7 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
               viewport={{ once: true }}
               transition={{ ease: "easeInOut", delay: 0.3, duration: 0.8 }}
               whileInView={{ width: "16rem" }}
-              className="absolute top-0 z-30 h-36 -translate-y-[20%] rounded-full bg-white/20 blur-2xl"
+              className="absolute top-0 z-30 h-36 -translate-y-[20%] rounded-full bg-primary/20 blur-2xl"
             />
 
             {/* Top line */}
@@ -82,7 +82,7 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
               viewport={{ once: true }}
               transition={{ ease: "easeInOut", delay: 0.3, duration: 0.8 }}
               whileInView={{ width: "30rem" }}
-              className="absolute inset-auto z-50 h-0.5 -translate-y-[-10%] bg-white/60"
+              className="absolute inset-auto z-50 h-0.5 -translate-y-[-10%] bg-primary/60"
             />
 
             {/* Left gradient cone */}
@@ -97,10 +97,10 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
               style={{
                 backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
               }}
-              className="absolute inset-auto right-1/2 h-56 overflow-visible w-[30rem] bg-gradient-conic from-white/20 via-transparent to-transparent [--conic-position:from_70deg_at_center_top]"
+              className="absolute inset-auto right-1/2 h-56 overflow-visible w-[30rem] bg-gradient-conic from-primary/20 via-transparent to-transparent [--conic-position:from_70deg_at_center_top]"
             >
-              <div className="absolute w-[100%] left-0 bg-black h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
-              <div className="absolute w-40 h-[100%] left-0 bg-black bottom-0 z-20 [mask-image:linear-gradient(to_right,white,transparent)]" />
+              <div className="absolute w-[100%] left-0 bg-background h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
+              <div className="absolute w-40 h-[100%] left-0 bg-background bottom-0 z-20 [mask-image:linear-gradient(to_right,white,transparent)]" />
             </motion.div>
 
             {/* Right gradient cone */}
@@ -115,10 +115,10 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
               style={{
                 backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
               }}
-              className="absolute inset-auto left-1/2 h-56 w-[30rem] bg-gradient-conic from-transparent via-transparent to-white/20 [--conic-position:from_290deg_at_center_top]"
+              className="absolute inset-auto left-1/2 h-56 w-[30rem] bg-gradient-conic from-transparent via-transparent to-primary/20 [--conic-position:from_290deg_at_center_top]"
             >
-              <div className="absolute w-40 h-[100%] right-0 bg-black bottom-0 z-20 [mask-image:linear-gradient(to_left,white,transparent)]" />
-              <div className="absolute w-[100%] right-0 bg-black h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
+              <div className="absolute w-40 h-[100%] right-0 bg-background bottom-0 z-20 [mask-image:linear-gradient(to_left,white,transparent)]" />
+              <div className="absolute w-[100%] right-0 bg-background h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
             </motion.div>
           </div>
         )}
@@ -133,7 +133,7 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
           <div className="flex flex-col items-center text-center space-y-4">
             <h1
               className={cn(
-                "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white",
+                "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground",
                 titleClassName,
               )}
             >
@@ -142,7 +142,7 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
             {subtitle && (
               <p
                 className={cn(
-                  "text-xl text-white/80",
+                  "text-xl text-muted-foreground",
                   subtitleClassName,
                 )}
               >
@@ -156,7 +156,6 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
                     key={index}
                     variant={action.variant || "outline"}
                     onClick={() => handleActionClick(action.href)}
-                    className="bg-white text-black hover:bg-white/90 border-white"
                   >
                     {action.label}
                   </Button>

@@ -66,15 +66,15 @@ const Chat = () => {
   );
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <div className="p-4 border-b border-white/10">
+      <div className="p-4 border-b border-border">
         <div className="max-w-4xl mx-auto flex items-center gap-4">
           <Button
             variant="ghost"
             size="sm"
             onClick={() => navigate('/')}
-            className="text-white hover:bg-white/10"
+            className="text-foreground hover:bg-accent"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Home
@@ -94,10 +94,10 @@ const Chat = () => {
             <div className="flex flex-col gap-10 items-center">
               <div className="text-center space-y-4">
                 <div className="text-6xl mb-4">🤖</div>
-                <h2 className="text-3xl font-bold text-white mb-4">
+                <h2 className="text-3xl font-bold text-foreground mb-4">
                   How Can I Help You Today?
                 </h2>
-                <p className="text-lg text-white/80 max-w-2xl mx-auto">
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                   Tell me to process customer complaints and I'll create Jira tickets, 
                   generate reports, and handle the entire workflow for you.
                 </p>
@@ -108,7 +108,7 @@ const Chat = () => {
               </form>
               
               <div className="text-center">
-                <p className="text-sm text-white/60">
+                <p className="text-sm text-muted-foreground">
                   Press Enter to send, Shift + Enter for new line
                 </p>
               </div>
@@ -122,11 +122,11 @@ const Chat = () => {
               {messages.map((message) => (
                 <div key={message.id} className="flex gap-3 justify-end">
                   <div className="flex flex-col gap-1 items-end">
-                    <div className="max-w-md px-4 py-3 rounded-2xl text-sm leading-relaxed bg-white/10 text-white">
+                    <div className="max-w-md px-4 py-3 rounded-2xl text-sm leading-relaxed bg-accent text-foreground">
                       {message.content}
                     </div>
                     <div className="flex items-center gap-2 px-2">
-                      <span className="text-xs text-white/60">
+                      <span className="text-xs text-muted-foreground">
                         {message.timestamp.toLocaleTimeString([], { 
                           hour: '2-digit', 
                           minute: '2-digit' 
@@ -134,8 +134,8 @@ const Chat = () => {
                       </span>
                     </div>
                   </div>
-                  <div className="flex-shrink-0 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                    <User className="h-4 w-4 text-white" />
+                  <div className="flex-shrink-0 w-8 h-8 bg-accent rounded-full flex items-center justify-center">
+                    <User className="h-4 w-4 text-foreground" />
                   </div>
                 </div>
               ))}
@@ -143,14 +143,14 @@ const Chat = () => {
               {/* Processing State */}
               {isProcessing && (
                 <div className="flex gap-3 justify-start">
-                  <div className="flex-shrink-0 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                    <Bot className="h-4 w-4 text-white" />
+                  <div className="flex-shrink-0 w-8 h-8 bg-accent rounded-full flex items-center justify-center">
+                    <Bot className="h-4 w-4 text-foreground" />
                   </div>
-                  <div className="flex flex-col items-center gap-4 bg-white/5 p-6 rounded-2xl">
+                  <div className="flex flex-col items-center gap-4 bg-accent/50 p-6 rounded-2xl">
                     <BoxLoader />
                     <div className="text-center">
-                      <p className="text-white font-medium">TelecomMaster is processing complaints...</p>
-                      <p className="text-white/60 text-sm mt-1">{currentLoadingMessage}</p>
+                      <p className="text-foreground font-medium">TelecomMaster is processing complaints...</p>
+                      <p className="text-muted-foreground text-sm mt-1">{currentLoadingMessage}</p>
                     </div>
                   </div>
                 </div>
