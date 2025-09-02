@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { AIInput } from '@/components/ui/ai-input';
+import { PromptBox } from '@/components/ui/chatgpt-prompt-input';
 import { MessageBubble } from './MessageBubble';
 import { TypingIndicator } from './TypingIndicator';
 import { useTelecomAgent } from '@/hooks/use-telecom-agent';
@@ -35,12 +35,25 @@ export function ChatInterface() {
       </div>
 
       {/* Input Area */}
-      <AIInput
-        placeholder="Tell me to process customer complaints and create Jira tickets..."
-        onSubmit={sendMessage}
-        disabled={isLoading}
+      <form 
+        onSubmit={(e) => {
+          e.preventDefault();
+          const formData = new FormData(e.currentTarget);
+          const message = formData.get('message') as string;
+          if (message?.trim()) {
+            sendMessage(message.trim());
+            e.currentTarget.reset();
+          }
+        }}
         className="w-full"
-      />
+      >
+        <PromptBox
+          name="message"
+          placeholder="Tell me to process customer complaints and create Jira tickets..."
+          disabled={isLoading}
+          className="w-full"
+        />
+      </form>
     </div>
   );
 }
